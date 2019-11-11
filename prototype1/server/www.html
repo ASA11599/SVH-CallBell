@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>webpage</title>
+</head>
+<body>
+    <button id="btnGET">GET</button>
+    <button id="btnPOST">POST</button>
+    <button id="btnDELETE">DELETE</button>
+    <h1>Response</h1>
+    <p id="res"></p>
+</body>
+<script>
+    const btnGET = document.getElementById("btnGET");
+    const btnPOST = document.getElementById("btnPOST");
+    const btnDELETE = document.getElementById("btnDELETE");
+    const res = document.getElementById("res");
+    const req = new XMLHttpRequest();
+    const url = "http://192.168.2.139:8080/";
+    req.onreadystatechange = function(err) {
+        res.innerText = req.responseText;
+    }
+    btnGET.onclick = () => {
+        req.open("GET", url);
+        req.send();
+    }
+    btnPOST.onclick = () => {
+        req.open("POST", url);
+        req.send();
+    }
+    btnDELETE.onclick = () => {
+        req.open("DELETE", url);
+        req.send();
+    }
+</script>
+</html>

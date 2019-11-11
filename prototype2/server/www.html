@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CallBell</title>
+</head>
+<body>
+    <h1>Choose an action</h1>
+    <h2>Get active notifications</h2>
+    <button id="btnGET">GET</button>
+    <h2>Post a new notification</h2>
+    <input type="text" name="room" id="roomTxt">
+    <br>
+    <input type="text" name="description" id="descriptionTxt">
+    <button id="btnPOST">POST</button>
+    <h2>Delete a notification</h2>
+    <input type="text" name="id" id="idTxt">
+    <button id="btnDELETE">DELETE</button>
+    <h1>Response</h1>
+    <p id="res"></p>
+    <script>
+            const btnGET = document.getElementById("btnGET");
+            const btnPOST = document.getElementById("btnPOST");
+            const btnDELETE = document.getElementById("btnDELETE");
+            const res = document.getElementById("res");
+            const roomInput = document.getElementById("roomTxt");
+            const descriptionInput = document.getElementById("descriptionTxt");
+            const idInput = document.getElementById("idTxt");
+            const req = new XMLHttpRequest();
+            const url = "http://localhost:8080/api";
+            req.onreadystatechange = function(err) {
+                res.innerText = req.responseText;
+            }
+            btnGET.onclick = () => {
+                req.open("GET", url);
+                req.send();
+            }
+            btnPOST.onclick = () => {
+                req.open("POST", encodeURI(url + "?room=" + roomInput.value + "&description=" + descriptionInput.value));
+                req.send();
+            }
+            btnDELETE.onclick = () => {
+                req.open("DELETE", encodeURI(url + "?id=" + idInput.value));
+                req.send();
+            }
+        </script>
+</body>
+</html>
