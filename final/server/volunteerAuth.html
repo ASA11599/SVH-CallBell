@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVH CallBell - Volunteer</title>
+</head>
+<body>
+    <h1>Volunteer password required</h1>
+    <input type="password" name="vpass" id="vpass">
+    <button id="btn">GO</button>
+    <script>
+        function hash(password) {
+            // TODO: actually hash the password
+            return password;
+        }
+        const btn = document.getElementById("btn");
+        const passwordInput = document.getElementById("vpass");
+        btn.onclick = function() {
+            const url = "http://localhost/vauth?p=" + hash(passwordInput.value);
+            window.location.replace(url);
+        }
+    </script>
+</body>
+</html>
