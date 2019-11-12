@@ -8,5 +8,27 @@
 </head>
 <body>
     <h1>You are in the patient page</h1>
+    <h2>Post a new notification</h2>
+    <input type="text" name="room" id="roomTxt">
+    <br>
+    <input type="text" name="description" id="descriptionTxt">
+    <button id="btnPOST">POST</button>
+    <h1>Response</h1>
+    <p id="res"></p>
+    <script>
+        const btnPOST = document.getElementById("btnPOST");
+        const res = document.getElementById("res");
+        const roomInput = document.getElementById("roomTxt");
+        const descriptionInput = document.getElementById("descriptionTxt");
+        const req = new XMLHttpRequest();
+        const url = "http://localhost:8080/api";
+        req.onreadystatechange = function(err) {
+            if (req.readyState === XMLHttpRequest.DONE && req.status === 201) res.innerText += "Posted\n";
+        }
+        btnPOST.onclick = () => {
+            req.open("POST", encodeURI(url + "?room=" + roomInput.value + "&description=" + descriptionInput.value));
+            req.send();
+        }
+    </script>
 </body>
 </html>

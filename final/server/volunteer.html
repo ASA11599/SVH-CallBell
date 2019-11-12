@@ -8,5 +8,31 @@
 </head>
 <body>
     <h1>You are in the volunteer page</h1>
+    <h2>Get active notifications</h2>
+    <button id="btnGET">GET</button>
+    <h2>Delete a notification</h2>
+    <input type="text" name="id" id="idTxt">
+    <button id="btnDELETE">DELETE</button>
+    <h1>Response</h1>
+    <p id="res"></p>
+    <script>
+        const btnGET = document.getElementById("btnGET");
+        const btnDELETE = document.getElementById("btnDELETE");
+        const res = document.getElementById("res");
+        const idInput = document.getElementById("idTxt");
+        const req = new XMLHttpRequest();
+        const url = "http://localhost:8080/api";
+        req.onreadystatechange = function(err) {
+            res.innerText = req.responseText;
+        }
+        btnGET.onclick = () => {
+            req.open("GET", url);
+            req.send();
+        }
+        btnDELETE.onclick = () => {
+            req.open("DELETE", encodeURI(url + "?id=" + idInput.value));
+            req.send();
+        }
+    </script>
 </body>
 </html>
