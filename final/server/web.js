@@ -8,8 +8,8 @@ const HOSTNAME = "localhost";
 /**
  * These will be replaced with their hash
  */
-const pPassword = "patient123";
-const vPassword = "volunteer123";
+const pPassword = "5f4dcc3b5aa765d61d8327deb882cf99";
+const vPassword = "5f4dcc3b5aa765d61d8327deb882cf99";
 
 const homePage = "./home.html";
 const patientLogin = "./patientAuth.html";
@@ -17,6 +17,7 @@ const patientPage = "./patient.html";
 const volunteerLogin = "./volunteerAuth.html";
 const volunteerPage = "./volunteer.html";
 const pageNotFound = "./404.html";
+const hashScript = "./md5.js"
 
 function fileToString(path) {
     return fs.readFileSync(path).toString();
@@ -72,6 +73,10 @@ const server = http.createServer((req, res) => {
                 res.statusCode = 200;
                 res.write(fileToString(patientLogin));
             }
+            break;
+        case "/md5.js":
+            res.setHeader('Content-Type', 'text/javascript');
+            res.write(fileToString(hashScript));
             break;
         default:
             res.statusCode = 404;

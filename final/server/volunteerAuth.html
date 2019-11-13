@@ -10,10 +10,10 @@
     <h1>Volunteer password required</h1>
     <input type="password" name="vpass" id="vpass">
     <button id="btn">GO</button>
+    <script src="http://localhost/md5.js"></script>
     <script>
         function hash(password) {
-            // TODO: actually hash the password
-            return password;
+            return md5(password);
         }
         const btn = document.getElementById("btn");
         const passwordInput = document.getElementById("vpass");
