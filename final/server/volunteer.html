@@ -16,23 +16,32 @@
     <h1>Response</h1>
     <p id="res"></p>
     <script>
+
+        // Change this when running on the Raspberry Pi
+        const API_HOSTNAME = "localhost";
+        const API_PORT = "8080";
+
         const btnGET = document.getElementById("btnGET");
         const btnDELETE = document.getElementById("btnDELETE");
         const res = document.getElementById("res");
         const idInput = document.getElementById("idTxt");
         const req = new XMLHttpRequest();
-        const url = "http://localhost:8080/api";
+        const url = "http://" + API_HOSTNAME + ":" + API_PORT + "/api";
+
         req.onreadystatechange = function(err) {
             res.innerText = req.responseText;
         }
+
         btnGET.onclick = () => {
             req.open("GET", url);
             req.send();
         }
+
         btnDELETE.onclick = () => {
             req.open("DELETE", encodeURI(url + "?id=" + idInput.value));
             req.send();
         }
+
     </script>
 </body>
 </html>

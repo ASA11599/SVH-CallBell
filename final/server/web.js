@@ -6,7 +6,7 @@ const PORT = 80;
 const HOSTNAME = "localhost";
 
 /**
- * These will be replaced with their hash
+ * MD5 hash of the patient and volunteer passwords
  */
 const pPassword = "5f4dcc3b5aa765d61d8327deb882cf99";
 const vPassword = "5f4dcc3b5aa765d61d8327deb882cf99";
