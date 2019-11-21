@@ -30,7 +30,7 @@ function deleteHandler(id) {
     return JSON.stringify(getData());
 }
 
-const server = http.createServer(async (req, res) => {
+const server = http.createServer( (req, res) => {
 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE');
 

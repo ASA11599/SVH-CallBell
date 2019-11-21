@@ -8,9 +8,7 @@
 </head>
 <body>
     <h1>You are in the volunteer page</h1>
-    <h2>Get active notifications</h2>
-    <button id="btnGET">GET</button>
-    <h1>Response</h1>
+    <h2>Active calls</h2>
     <p id="res"></p>
     <script>
 
@@ -18,7 +16,6 @@
         const API_HOSTNAME = "localhost";
         const API_PORT = "8080";
 
-        const btnGET = document.getElementById("btnGET");
         const res = document.getElementById("res");
         const req = new XMLHttpRequest();
         const url = "http://" + API_HOSTNAME + ":" + API_PORT + "/api";
@@ -45,7 +42,7 @@
         function callToElement(callObject) {
             const start = "<br><br>=========================================";
             const end = "=========================================<br><br>";
-            const roomH2 = "<h2>" + callObject.room.toString() + "</h2>";
+            const roomH2 = "<h2>" + "room " + callObject.room.toString() + "</h2>";
             const descriptionP = "<p>" + callObject.description.toString() + "</p>";
             const dateP = "<p>" + toLocalTime(callObject.t.toString()) + "</p>";
             const deleteCallBtn = `<button class="delCall" id="${callObject.id.toString()}">DELETE</button><br><br>`;
@@ -56,10 +53,10 @@
             if (req.readyState === XMLHttpRequest.DONE && req.status === 200) displayCalls(req.responseText);
         }
 
-        btnGET.onclick = () => {
+        setInterval(() => {
             req.open("GET", url);
             req.send();
-        }
+        }, 1000);
 
         function deleteCall(id) {
             req.open("DELETE", encodeURI(url + "?id=" +id));
