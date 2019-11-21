@@ -11,13 +11,13 @@ const HOSTNAME = "localhost";
 const pPassword = "5f4dcc3b5aa765d61d8327deb882cf99";
 const vPassword = "5f4dcc3b5aa765d61d8327deb882cf99";
 
-const homePage = "./home.html";
-const patientLogin = "./patientAuth.html";
-const patientPage = "./patient.html";
-const volunteerLogin = "./volunteerAuth.html";
-const volunteerPage = "./volunteer.html";
-const pageNotFound = "./404.html";
-const hashScript = "./md5.js"
+const homePage = "./public/home.html";
+const patientLogin = "./public/patientAuth.html";
+const patientPage = "./public/patient.html";
+const volunteerLogin = "./public/volunteerAuth.html";
+const volunteerPage = "./public/volunteer.html";
+const pageNotFound = "./public/404.html";
+const hashScript = "./public/md5.js"
 
 function fileToString(path) {
     return fs.readFileSync(path).toString();
