@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>You are in the volunteer page</h1>
+    <input type="checkbox" id="autorefresh"> Auto-refresh<br><br>
+    <button id="refreshBtn">REFRESH</button>
     <h2>Active calls</h2>
     <p id="res"></p>
     <script>
@@ -19,6 +21,18 @@
         const res = document.getElementById("res");
         const req = new XMLHttpRequest();
         const url = "http://" + API_HOSTNAME + ":" + API_PORT + "/api";
+
+        const autorefresh = document.getElementById("autorefresh");
+        const refreshBtn = document.getElementById("refreshBtn");
+
+        function getCalls() {
+            req.open("GET", url);
+            req.send();
+        }
+
+        getCalls();
+
+        refreshBtn.onclick = getCalls;
 
         function toLocalTime(utc) {
             return (function (date) {
@@ -59,8 +73,7 @@
         }
 
         setInterval(() => {
-            req.open("GET", url);
-            req.send();
+            if (autorefresh.checked) getCalls();
         }, 1000);
 
         function deleteCall(id) {
