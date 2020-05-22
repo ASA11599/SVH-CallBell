@@ -1,10 +1,12 @@
 const http = require('http');
 const querystring = require('querystring');
-const sqlite = require('sqlite-sync');
+const sqlite3 = require('sqlite3');
 const URL = require('url').URL;
 
 const PORT = 8080;
 const HOSTNAME = 'localhost';
+
+
 
 sqlite.connect('db/callbell.db');
 

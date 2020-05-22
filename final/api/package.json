@@ -1,14 +1,17 @@
 {
-  "name": "svh-callbell-api",
+  "name": "api",
   "version": "1.0.0",
-  "description": "An API to store and retrieve calls for the SVH volunteer call bell system",
-  "main": "api.js",
+  "description": "An API to create/read/delete requests for the call bell system",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "sqlite-sync": "^0.3.9"
-  }
+  "license": "ISC"
 }

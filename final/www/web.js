@@ -2,8 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const querystring = require('querystring');
 
-const PORT = 80;
-const HOSTNAME = "localhost";
+const PORT = 3000;
+const HOSTNAME = "192.168.64.2";
 
 /**
  * MD5 hash of the patient and volunteer passwords
