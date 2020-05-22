@@ -3,7 +3,7 @@ const sqlite3 = require("sqlite3");
 const querystring = require("querystring");
 const URL = require("url").URL;
 
-const db = new sqlite3.Database(":memory");
+const db = new sqlite3.Database(":memory:");
 
 db.serialize(() => {
     db.run("CREATE TABLE IF NOT EXISTS notifications(name text)", (err) => {
@@ -11,10 +11,8 @@ db.serialize(() => {
     });
 });
 
-db.run("INSERT INTO notifications VALUES ('Amayas')");
-
 const PORT = 8080;
-const HOSTNAME = "192.168.64.2";
+const HOSTNAME = "192.168.64.5";
 
 function getQueryParams(url) {
     return querystring.parse(new URL('http://' + HOSTNAME + url).search.slice(1));
@@ -36,7 +34,7 @@ app.get("/api", (req, res) => {
                 res.end(err);
             } else {
                 rows.forEach((value) => {
-                    res.write(value);
+                    res.write(JSON.stringify(value));
                 });
                 res.end();
             }
