@@ -4,7 +4,6 @@
   "description": "An API to create/read/delete requests for the call bell system",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {},
